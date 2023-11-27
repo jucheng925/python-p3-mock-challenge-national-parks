@@ -11,7 +11,7 @@ class NationalPark:
     
     @name.setter
     def name(self, name):
-        if not hasattr(self, "_name"):
+        if not hasattr(self, "name"):
             if isinstance(name, str) and len(name) >= 3:
                 self._name = name
             else:
@@ -38,6 +38,7 @@ class NationalPark:
             visitor_list.sort(key = lambda x: x[1], reverse= True)
             return visitor_list[0][0]
         
+        
     @classmethod
     def most_visited(cls):
         park_list = []
@@ -45,6 +46,18 @@ class NationalPark:
             park_list.append([park, park.total_visits()])
         park_list.sort(key = lambda x:x[1], reverse = True)
         return park_list[0][0] if park_list[0][0] != 0 else None
+    
+    '''
+    curr_park = None
+    curr_max_visits = 0
+
+    for national_park in cls.all:
+        if national_park.total_visits() > curr_max_visits:
+            curr_park = national_park
+            curr_max_visits = national_park.total.visits()
+
+    return curr_park
+    '''
 
 
 
@@ -128,7 +141,7 @@ class Visitor:
     
     @name.setter
     def name(self, name):
-        if isinstance(name, str) and len(name) in range(1, 15):
+        if isinstance(name, str) and len(name) in range(1, 16):
             self._name = name
         else:
             pass
